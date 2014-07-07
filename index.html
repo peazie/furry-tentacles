@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FB Ads Manager</title>
+    <meta charset="UTF-8">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+</head>
+<body ng-app="AdManager">
+
+    <div class="container">
+        <ng-view></ng-view>
+        <div id="fb-root"></div>
+    </div>
+
+    <script src="https://code.angularjs.org/1.2.18/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.2.18/angular-route.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/services/fb.js"></script>
+
+</body>
+</html>
