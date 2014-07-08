@@ -1,5 +1,7 @@
 AdManager.service('Fb', ['$rootScope', '$http', function($rootScope, $http) {
 
+    var accessToken = '';
+
     this.login = function() {
         FB.login(function(response) {
                 console.log(response);
@@ -16,6 +18,9 @@ AdManager.service('Fb', ['$rootScope', '$http', function($rootScope, $http) {
 
         if (response.status === 'connected') {
             testAPI();
+            accessToken = response.authResponse.accessToken;
+            $rootScope.$broadcast('fb.token.updated');
+            console.log("broadcasted");
         } else if (response.status === 'not_authorized') {
             document.getElementById('status').innerHTML = 'Please log ' + 'into this app.';
         } else {
@@ -23,6 +28,9 @@ AdManager.service('Fb', ['$rootScope', '$http', function($rootScope, $http) {
         }
     }
 
+    this.getAccessToken = function() {
+        return accessToken;
+    }
 
     this.checkLoginState = function() {
         FB.getLoginStatus(function(response) {
