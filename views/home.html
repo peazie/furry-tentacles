@@ -1,7 +1,8 @@
-<fb:login-button show-faces="true" max-rows="1" size="large"></fb:login-button>
+<fb:login-button show-faces="true" max-rows="1"></fb:login-button>
 
 <div class="row" ng-init="loggedIn='no'">
-    <h4>Connected: {{ loggedIn }}</h4>
+    <h4>Token: </h4>
+    <code>{{ accessToken }}</code>
     <div id="status"></status>
     <div class="btn btn-default" ng-click="Fb.checkLoginState()">Status</div>
 </div>

@@ -23,14 +23,14 @@ AdManager.run(['$rootScope', '$window', 'Fb', function($rootScope, $window, Fb) 
     $rootScope.Fb = Fb;
 }]);
 
-AdManager.config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/', {
-        controller: 'HomeCtrl',
-        templateUrl: '/views/home.html',
+AdManager.controller('HomeCtrl', ['$rootScope', '$scope', 'Fb', function($rootScope, $scope, Fb) {
+
+    $rootScope.$on('fb.token.updated', function() {
+        console.log("captured");
+        $scope.$apply(function() {
+            $scope.accessToken = Fb.getAccessToken();
+        });
+        console.log($scope.accessToken);
     });
-}]);
 
-AdManager.controller('HomeCtrl', ['$scope', 'Fb', function($scope, Fb) {
-}]);
-
-
+}]);//HomeCtrl
